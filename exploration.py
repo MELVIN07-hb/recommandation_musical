@@ -45,7 +45,7 @@ print("Dataset final nettoyé :", df.shape)
 
 # Sauvegarde du dataset nettoyé pour l'application Streamlit
 df.to_csv("data/songs_clean.csv", index=False)
-print("✅ Fichier data/songs_clean.csv créé.")
+print(" Fichier data/songs_clean.csv créé.")
 
 # Graphiques d'exploration
 sns.histplot(df["energy"])
@@ -83,7 +83,7 @@ model.fit(X)
 def recommend_song(song_name, df, model, X, n=5):
     matches = df[df["track_name"] == song_name]
     if matches.empty:
-        return f"❌ Chanson '{song_name}' introuvable dans le dataset."
+        return f"Chanson '{song_name}' introuvable dans le dataset."
 
     index = matches.index[0]
     distances, indices = model.kneighbors([X[index]], n_neighbors=n + 10)
